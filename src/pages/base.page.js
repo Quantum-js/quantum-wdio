@@ -1,15 +1,13 @@
-const Page = require('./Page.js');
-const _ = require('lodash');
+import Page from './Page'
+import _ from 'lodash'
 
 class BasePage extends Page {
 
     constructor() {
         super();
-        this.pageName = __filename.split(__dirname+"/").pop().split('\.')[0];
-        console.log("pageName:"+ this.pageName);
-        this.loc = _.merge(this.loc, this.locators(this.pageName).selectors);
+        this.pageName = __filename.split(__dirname+"/").pop().split('\.')[0]
+        console.log("pageName:"+ this.pageName)
+        this.loc = _.merge(this.loc, this.locators(this.pageName).selectors)
     }
-
-};
-
-module.exports= BasePage;
+}
+module.exports= BasePage

@@ -1,7 +1,5 @@
-const HomePage = require('../pages/home.page.js');
-
-const _ = require('lodash');
-const pageObjectMap = require('../support/pageObjectMap.js');
+import HomePage from'../pages/home.page.js'
+import pageObjectMap from '../support/pageObjectMap.js'
 
 module.exports = function() {
     'use strict';

@@ -1,5 +1,5 @@
 {
-    "name": "quantum-with-service",
+    "name": "quantum-wdio",
     "version": "1.0.0",
     "description": "Quantum JS using wdio-perfecto-service",
     "scripts": {
@@ -9,6 +9,10 @@
     "author": "",
     "license": "ISC",
     "devDependencies": {
+        "@babel/cli": "^7.2.3",
+        "@babel/core": "^7.3.4",
+        "@babel/preset-env": "^7.3.4",
+        "@babel/register": "^7.0.0",
         "allure-commandline": "2.2.1",
         "assert-diff": "1.1.0",
         "async": "2.0.1",
@@ -31,11 +35,10 @@
         "wdio-json-reporter": "~0.1.0",
         "wdio-junit-reporter": "~0.1.0",
         "wdio-screenshot": "0.6.0",
-        "webdriverio": "^4.14.1",
-        "wdio-perfecto-service": "latest"
+        "wdio-perfecto-service": "latest",
+        "webdriverio": "^4.14.1"
     },
     "dependencies": {
         "lodash": "^4.17.11"
-
     }
 }

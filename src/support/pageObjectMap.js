@@ -1,7 +1,7 @@
-let file, files, extraFiles, extraFilesPattern, globule, i, len, page, path;
+let  files, extraFiles, extraFilesPattern, i, page
 
-globule = require('globule');
-path = require('path');
+const globule = require('globule')
+const path = require('path')
 
 files = globule.find('**/pages/**/*.page.js');
 

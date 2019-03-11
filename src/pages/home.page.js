@@ -1,5 +1,5 @@
-const BasePage = require('./base.page.js')
-const _ = require('lodash')
+import BasePage from './base.page'
+import _ from 'lodash'
 
 class HomePage extends BasePage {
 
