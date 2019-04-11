@@ -8,7 +8,6 @@ class GooglePage extends BasePage {
         super();
         this.siteHostPrefix = "http://google.com"
         this.pageName = __filename.split(__dirname+"/").pop().split('\.')[0]
-        console.log("pageName:"+ this.pageName);
         this.loc = _.merge(this.loc, this.locators(this.pageName).selectors)
     };
 
@@ -19,7 +18,11 @@ class GooglePage extends BasePage {
 
     }
     searchResult(result) {
-        assert.equal($(`*=${result}`).isVisible(),true, `Search result ${result} not visible`)
+        browser.waitForText('dddd', 200, true)
+        // $('//div[@class=\"srg\"]//a').isVisible()
+        browser.waitForVisible('//div[@class=\"srg1\"]//a', 5000)
+
+        // assert.equal($(`*=${result}).isVisible(),true, `Search result ${result} not visible`)
     }
 }
 module.exports= GooglePage

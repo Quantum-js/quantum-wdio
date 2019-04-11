@@ -18,7 +18,7 @@ module.exports = function() {
 
         var that = this;
         that.currentPage.getPage();
-        return that.currentPage.waitForLoaded()
+        // that.currentPage.waitForLoaded()
 
     })
 
@@ -123,6 +123,7 @@ module.exports = function() {
         if (!_.isUndefined(pageObjectMap[pageName])) {
             this.currentPage = new pageObjectMap[pageName]
         }
+
         return this.currentPage.waitForLoaded()
     })
 

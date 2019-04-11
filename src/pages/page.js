@@ -7,7 +7,7 @@ class Page {
         this.loc = {}
 
         this.repoLocationKey = browser.desiredCapabilities.repoLocationKey.toLowerCase() || browser.desiredCapabilities.platformName.toLowerCase();
-        console.log(`repoLocationKey ${this.repoLocationKey}`)
+        // console.debug(`repoLocationKey ${this.repoLocationKey}`)
         this.baseLocatorsPath = '../pageLocators'
         // default url
         this.url = '/'
@@ -29,16 +29,17 @@ class Page {
         // sessionStorage/localStorage parameters via pageUtils.disableNABSurveyPopup().
         //browser.debug()
         browser.url(that.siteHostPrefix + that.url)
+        //browser.timeouts('implicit', 15000)
     }
 
     // default element to check page is loaded
 
 
     waitForLoaded() {
-        console.log('waitForLoaded')
-        //return $(this.loc.loadCheck).waitForExisting(5000);
-        //return browser.waitForExist(   this.loc.loadCheck, 5000    )
-        return true
+         console.log('waitForLoaded')
+        //browser.isExisting(this.loc.loadCheck)
+        browser.waitForExist(this.loc.loadCheck,5000)
+        // return true
     }
 
 

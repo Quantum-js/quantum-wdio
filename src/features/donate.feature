@@ -2,8 +2,7 @@
 Feature: Perfecto Wiki - donate
 
   Scenario: Donate
-    Given I resize to a 1024x768 screen size
-    And I go to the "HomePage" page
+    Given I go to the "HomePage" page
     Then I should be on the "HomePage" page
     And I select "English" language on home page
     And I select donate to wikipedia link on home page

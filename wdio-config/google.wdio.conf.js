@@ -4,21 +4,23 @@ global.expect=chai.expect;
 global.assert=chai.assert;
 global.should=chai.should();
 
-const tagsConf=require('../test-config/tags/google.tags.json')
 
-//ThePerfectoContinuousQualityLabyouworkwith
+// The Perfecto Continuous Quality Lab you work with
 global.CQL_NAME='ps'
 const host=CQL_NAME+'.perfectomobile.com'
+
+global.projectName="WDIO_TESTS_SERVICE";
+
+const tagsFile = process.env.CUCUMBER_TAGS_FILE || 'google.tags.json'
+const tags = process.env.CUCUMBER_TAGS_LIST
+const tagsConf = tags || require (`../test-config/tags/${tagsFile}`)
+let caps=require(`../test-config/devices/${process.env.E2E_DEVICE}`);
+
+const specPath='./src/features/**/*.feature';
 
 global.STEP_TIMEOUT=900000;
 global.IMPLICIT_TIMEOUT=5000;
 global.WAITFOR_TIMEOUT=10000;
-
-global.projectName="WDIO_TESTS_SERVICE";
-
-let caps=require(`../test-config/devices/${process.env.E2E_DEVICE}`);
-
-const specPath='./src/features/**/*.feature';
 
 exports.config={
 
@@ -30,9 +32,13 @@ exports.config={
     port:80,
     specs: specPath,
     exclude:[],
+    sync: true,
+    // Level of logging verbosity: silent | verbose | command | data | result | error
+    logLevel: 'verbose',
+    //
     maxInstances:4,
     framework:'cucumber',
-    reporters:['cucumber','junit'],
+    reporters:['cucumber'],
     reporterOptions:{
         junit:{
             outputDir:'./reports'
