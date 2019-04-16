@@ -15,15 +15,13 @@ module.exports = function() {
         if (!_.isUndefined(pageObjectMap[pageName])) {
             this.currentPage = new pageObjectMap[pageName]
         }
-
-        var that = this;
-        that.currentPage.getPage();
+        this.currentPage.getPage();
         // that.currentPage.waitForLoaded()
 
     })
 
     this.Given(/^I (?:have|change to|resize to|rotate to) a (\d+)x(\d+) screen size$/, function (width, height) {
-        return browser.setViewPortSize({
+        return browser.setViewportSize({
             width: parseInt(width, 10),
             height: parseInt(height, 10)
         })
@@ -89,12 +87,12 @@ module.exports = function() {
         // });
 
     })
-    this.Given(/^I start application by name "([^"]*)"$/, function (appName) {
-        return browser.execute("mobile:application:open", {'name': appName})
-    })
-    this.Given(/^I start application by id "([^"]*)"$/, function (appID) {
-        return browser.execute("mobile:application:open", {'identifier': appID})
-    })
+    // this.Given(/^I start application by name "([^"]*)"$/, function (appName) {
+    //     return browser.execute("mobile:application:open", {'name': appName})
+    // })
+    // this.Given(/^I start application by id "([^"]*)"$/, function (appID) {
+    //     return browser.execute("mobile:application:open", {'identifier': appID})
+    // })
     this.Then('the title should equal "([^"]*)"', function (text) {
         // return this.expect(browser.getTitle()).to.eventually.equal(text);
     })

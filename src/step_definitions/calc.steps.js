@@ -6,7 +6,7 @@ module.exports = function() {
     let currentPage = new pageObjectMap['CalcPage'];
 
     this.When(/^I add "(\d+)" to "(\d+)"$/, function (num1, num2) {
-        browser.switchToContextNative()
+        browser.context('NATIVE_APP')
 
         return currentPage.add(num1,num2)
     })

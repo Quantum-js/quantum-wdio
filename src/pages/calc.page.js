@@ -1,19 +1,19 @@
 import Page from './Page'
-import _ from 'lodash'
 
 class CalcPage extends Page {
 
     constructor() {
-        super()
-        this.pageName = __filename.split(__dirname+"/").pop().split('\.')[0]
-        this.loc = _.merge(this.loc, this.locators(this.pageName).selectors)
+
+        super('calc')
     }
 
     add(num1,num2){
+
         $(this.loc.btn_clear).waitForVisible(20000)
         // clear
         $(this.loc.btn_clear).click()
         // add
+        console.log('btn_' + num1, this.loc['btn_' + num1])
         $(this.loc['btn_' + num1]).click()
         $(this.loc.btn_add).click()
         $(this.loc['btn_' + num2]).click()
@@ -21,7 +21,7 @@ class CalcPage extends Page {
     }
 
     verifyResult(expectedResult){
-        let actualResult = browser.getElementText(this.loc.txtResult)
+        let actualResult = browser.getText(this.loc.txtResult)
         expect(actualResult).to.include(expectedResult)
         console.log('Actual Result is: ' + actualResult)
     }

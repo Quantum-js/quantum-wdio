@@ -1,4 +1,4 @@
-import HomePage from'../pages/home.page.js'
+import HomePage from '../pages/wikipedia/home.page.js'
 import pageObjectMap from '../support/pageObjectMap.js'
 
 module.exports = function() {

@@ -1,4 +1,4 @@
-import DonatePage from'../pages/donate.page.js'
+import DonatePage from '../pages/wikipedia/donate.page.js'
 import pageObjectMap from '../support/pageObjectMap.js'
 
 module.exports = function() {

@@ -3,16 +3,16 @@ import _ from 'lodash'
 import path from'path'
 
 class Page {
-    constructor() {
-        this.loc = {}
 
-        this.repoLocationKey = browser.desiredCapabilities.repoLocationKey.toLowerCase() || browser.desiredCapabilities.platformName.toLowerCase();
-        // console.debug(`repoLocationKey ${this.repoLocationKey}`)
+    constructor(pageName) {
+
+        this.pageName = pageName || this.getPageName()
+        this.siteHostPrefix = ''
+        this.repoLocationKey = browser.desiredCapabilities.repoLocationKey.toLowerCase() || browser.desiredCapabilities.platformName.toLowerCase()
         this.baseLocatorsPath = '../pageLocators'
+        this.loc = _.merge(this.loc, this.locators(this.getPageName()).selectors)
         // default url
         this.url = '/'
-        this.siteHostPrefix = "http://wikipedia.com"
-        this.loadCheck = 'body'
     }
 
     open (path) {
@@ -27,27 +27,23 @@ class Page {
         // We use browser.driver.get() instead of browser.get() so that Protractor doesn't go looking for an Angular page.
         // We then do a browser.get() to get to the actual URL being tested after setting the required NAB Survey
         // sessionStorage/localStorage parameters via pageUtils.disableNABSurveyPopup().
-        //browser.debug()
-        browser.url(that.siteHostPrefix + that.url)
-        //browser.timeouts('implicit', 15000)
-    }
-
-    // default element to check page is loaded
-
-
-    waitForLoaded() {
-         console.log('waitForLoaded')
+        browser.url(this.siteHostPrefix)
+        // console.log('waitForLoaded')
         //browser.isExisting(this.loc.loadCheck)
         browser.waitForExist(this.loc.loadCheck,5000)
         // return true
     }
 
 
+    waitForLoaded() {
+        browser.waitForExist(this.loc.loadCheck,5000)
+    }
+
     locators(pageName) {
 
-        var commonLocFile = path.join(__dirname, this.baseLocatorsPath+'/common/'+pageName+'.page.loc.js')
-        var platformLocFile =  path.join(__dirname, this.baseLocatorsPath+'/'+this.repoLocationKey+'/'+pageName+'.page.loc.js')
-        var commonLoc, platformLoc
+        const commonLocFile = path.join(__dirname, this.baseLocatorsPath+'/common/'+pageName+'.page.loc.js')
+        const platformLocFile =  path.join(__dirname, this.baseLocatorsPath+'/'+this.repoLocationKey+'/'+pageName+'.page.loc.js')
+        let commonLoc, platformLoc
 
         if (fs.existsSync(commonLocFile)) {
             commonLoc = require(commonLocFile)
@@ -68,9 +64,17 @@ class Page {
                 return platformLoc
             }
 
-            var mergeLoc = _.merge(commonLoc, platformLoc)
+            const mergeLoc = _.merge(commonLoc, platformLoc)
             return mergeLoc
         }
+    }
+
+    getPageName () {
+
+        let name =  this.pageName || __filename.split(__dirname+"/").pop().split('\.')[0]
+        console.log('name ' + name)
+        return name
+
     }
 }
 module.exports = Page

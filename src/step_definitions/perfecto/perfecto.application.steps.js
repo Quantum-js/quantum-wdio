@@ -35,9 +35,10 @@ module.exports = function() {
      */
 
     this.Then(/^I start application by name "([^"]*)"$/, function (name) {
-        browser.perfStartApp(name, "name");
+        browser.perfStartApp(name,'name');
         // Change to app context after open app
-        browser.perfSwitchToContext("NATIVE_APP");
+        browser.context('NATIVE_APP');
+        console.log('browser.context', browser.context())
     });
 
 
@@ -49,9 +50,9 @@ module.exports = function() {
      */
     this.Then(/^I start application by id "([^"]*)"$/, function (id) {
 
-        browser.perfStartApp(id, "identifier");
+        browser.perfStartApp(id, 'identifier');
         // Change to app context after open app
-        browser.perfSwitchToContext("NATIVE_APP");
+        browser.context('NATIVE_APP');
 
     });
 
@@ -73,7 +74,7 @@ module.exports = function() {
      */
     this.Then(/^I try to close application by id "([^"]*)"$/, function (id) {
 
-        browser.perfCloseApp(id, "identifier");
+        browser.perfCloseApp(id, 'identifier');
     });
 
     /**
@@ -83,7 +84,7 @@ module.exports = function() {
      */
     this.Then(/^I close application by name "([^"]*)"$/, function (name) {
 
-        browser.perfCloseApp(name, "name");
+        browser.perfCloseApp(name, 'name');
     });
 
     /**
@@ -322,7 +323,7 @@ module.exports = function() {
      * @see <a href="https://community.perfectomobile.com/series/20208/posts/1072062">Switching contexts</a>
      */
     this.Then(/^I switch to "([^"]*)" context$/, function (context) {
-        return browser.perfSwitchToContext(context);
+        return browser.context(context);
     });
 
 
@@ -332,7 +333,7 @@ module.exports = function() {
      * @see <a href="https://community.perfectomobile.com/series/20208/posts/1072062">Switching contexts</a>
      */
     this.Then(/^I switch to native context$/, function () {
-        return browser.perfSwitchToContext("NATIVE_APP");
+        return browser.context("NATIVE_APP");
     });
 
     /**
@@ -341,7 +342,7 @@ module.exports = function() {
      * @see <a href="https://community.perfectomobile.com/series/20208/posts/1072062">Switching contexts</a>
      */
     this.Then(/^I switch to webview context$/, function () {
-        return browser.perfSwitchToContext("WEBVIEW");
+        return browser.context("WEBVIEW");
     });
 
     /**
@@ -350,7 +351,7 @@ module.exports = function() {
      * @see <a href="https://community.perfectomobile.com/series/20208/posts/1072062">Switching contexts</a>
      */
     this.Then(/^I switch to visual context$/, function () {
-        return browser.perfSwitchToContext("VISUAL");
+        return browser.context("VISUAL");
     });
 
 
@@ -416,7 +417,7 @@ module.exports = function() {
      * @param name the application name as it is displayed on the device screen
      */
     this.Then(/^I start inject "([^"]*)" image to application name "([^"]*)"$/, function (repositoryFile, name) {
-        browser.switchToContext("NATIVE_APP");
+        browser.context("NATIVE_APP");
         browser.perfStartImageInjection(repositoryFile, name, "name");
     });
 
@@ -429,7 +430,7 @@ module.exports = function() {
      * @see <a href="https://community.perfectomobile.com/series/21760/posts/995065">Application Identifier</a>
      */
     this.Then(/^I start inject "([^"]*)" image to application id "([^"]*)"$/, function (repositoryFile, id) {
-        browser.perfSwitchToContext("NATIVE_APP");
+        browser.context("NATIVE_APP");
         browser.perfStartImageInjection(repositoryFile, id, "id");
     });
 

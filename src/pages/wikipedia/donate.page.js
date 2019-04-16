@@ -1,12 +1,9 @@
 import BasePage from './base.page'
-import _ from 'lodash'
 
 class DonatePage extends BasePage {
 
     constructor() {
-        super()
-        this.pageName = __filename.split(__dirname+"/").pop().split('\.')[0]
-        this.loc = _.merge(this.loc, this.locators(this.pageName).selectors)
+        super('wikipedia/donate')
     }
 
     selectAmountAndPayment() {
@@ -16,9 +13,9 @@ class DonatePage extends BasePage {
     }
 
     fillDonateForm() {
-       $(this.loc.nameField).setValueImmdate('Eyal')
+       browser.setValueImmediate(this.loc.nameField, 'Eyal')
         $(this.loc.lastNameField).click()
-        $(this.loc.lastNameField).setValueImmdate('Yovel')
+        browser.setValueImmediate(this.loc.lastNameField, 'Yovel')
     }
 
 }

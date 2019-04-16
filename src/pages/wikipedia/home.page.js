@@ -1,12 +1,9 @@
 import BasePage from './base.page'
-import _ from 'lodash'
 
 class HomePage extends BasePage {
 
     constructor() {
-        super()
-        this.pageName = __filename.split(__dirname+"/").pop().split('\.')[0]
-        this.loc = _.merge(this.loc, this.locators(this.pageName).selectors)
+        super('wikipedia/home')
     }
 
     submit () {
