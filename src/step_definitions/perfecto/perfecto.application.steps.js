@@ -24,7 +24,7 @@
  */
 
 module.exports = function() {
-    'use strict';
+    'use strict'
 
 
 
@@ -35,11 +35,11 @@ module.exports = function() {
      */
 
     this.Then(/^I start application by name "([^"]*)"$/, function (name) {
-        browser.perfStartApp(name,'name');
+        browser.perfStartApp('name',name)
         // Change to app context after open app
-        browser.context('NATIVE_APP');
+        browser.context('NATIVE_APP')
         console.log('browser.context', browser.context())
-    });
+    })
 
 
     /**
@@ -50,11 +50,11 @@ module.exports = function() {
      */
     this.Then(/^I start application by id "([^"]*)"$/, function (id) {
 
-        browser.perfStartApp(id, 'identifier');
+        browser.perfStartApp('identifier', id)
         // Change to app context after open app
-        browser.context('NATIVE_APP');
+        browser.context('NATIVE_APP')
 
-    });
+    })
 
     /**
      * Closes a native application with the applicaiton name.
@@ -63,8 +63,8 @@ module.exports = function() {
      */
     this.Then(/^I try to close application by name "([^"]*)"$/, function (name) {
 
-        browser.perfCloseApp(name, "name", true);
-    });
+        browser.perfCloseApp('name', name,true)
+    })
 
     /**
      * Closes a native application with the applicaiton id.
@@ -74,8 +74,8 @@ module.exports = function() {
      */
     this.Then(/^I try to close application by id "([^"]*)"$/, function (id) {
 
-        browser.perfCloseApp(id, 'identifier');
-    });
+        browser.perfCloseApp('identifier', id)
+    })
 
     /**
      * Closes a native application with the applicaiton name.
@@ -84,8 +84,8 @@ module.exports = function() {
      */
     this.Then(/^I close application by name "([^"]*)"$/, function (name) {
 
-        browser.perfCloseApp(name, 'name');
-    });
+        browser.perfCloseApp('name', name)
+    })
 
     /**
      * Closes a native application with the applicaiton id.
@@ -95,8 +95,8 @@ module.exports = function() {
      */
     this.Then(/^I close application by id "([^"]*)"$/, function (id) {
 
-        browser.perfCloseApp(id, "identifier");
-    });
+        browser.perfCloseApp('identifier', id)
+    })
 
     /**
      * Cleans the data (including cache) from any application installed on the device and brings the application back to its initial state.
@@ -105,8 +105,8 @@ module.exports = function() {
      */
     this.Then(/^I clean application by name "([^"]*)"$/, function (name) {
 
-        browser.perfCleanApp(name, "name");
-    });
+        browser.perfCleanApp('name', name)
+    })
 
     /**
      * Cleans the data (including cache) from any application installed on the device and brings the application back to its initial state.
@@ -116,8 +116,8 @@ module.exports = function() {
      */
     this.Then(/^I clean application by id "([^"]*)"$/, function (id) {
 
-        browser.perfCleanApp(id, "identifier");
-    });
+        browser.perfCleanApp('identifier', id)
+    })
 
     /**
      * Removes a single application on the device.
@@ -126,8 +126,8 @@ module.exports = function() {
      */
     this.Then(/^I uninstall application by name "([^"]*)"$/, function (name) {
 
-        browser.perfUninstallApplication(name, "name");
-    });
+        browser.perfUninstallApp('name', name)
+    })
 
     /**
      * Removes a single application on the device.
@@ -137,8 +137,8 @@ module.exports = function() {
      */
     this.Then(/^I uninstall application by id "([^"]*)"$/, function (id) {
 
-        browser.perfUninstallApp(id, "identifier");
-    });
+        browser.perfUninstallApp('identifier', id)
+    })
 
     /**
      * Installs a single application on the device.
@@ -152,8 +152,8 @@ module.exports = function() {
      * @param application the local or repository path, including directory and file name, where to locate the application
      */
     this.Then(/^I install application "([^"]*)"$/, function (application) {
-        browser.perfInstallApp(application);
-    });
+        browser.perfInstallApp(application)
+    })
 
     /**
      * Installs a single application on the device, with instrumentation.
@@ -167,16 +167,16 @@ module.exports = function() {
      * @param application the local or repository path, including directory and file name, where to locate the application
      */
     this.Then(/^I install instrumented application "([^"]*)"$/, function (application) {
-        browser.perfInstallApp(application, true);
-    });
+        browser.perfInstallApp(application, true)
+    })
 
 
     /**
      * Uninstalls all applications on the device, returning the device to its initial state. It does not affect applications pre-installed on the device.
      */
     this.Then(/^I uninstall all applications$/, function () {
-        browser.perfUninstallAllApps();
-    });
+        browser.perfUninstallAllApps()
+    })
 
     /**
      * Verifies the application version. The test will continue to run in case of failure.
@@ -185,8 +185,8 @@ module.exports = function() {
      * @return <code>true</code> if the version is verified, <code>false</code> otherwise
      */
     this.Then(/^application version should be "([^"]*)"$/, function (version) {
-        return browser.perfVerifyAppInfo("version", version);
-    });
+        return browser.perfVerifyAppInfo('version', version)
+    })
 
     /**
      * Checks the application version. Stops the test in case of failure.
@@ -194,8 +194,8 @@ module.exports = function() {
      * @param version the application version to check
      */
     this.Then(/^application version must be "([^"]*)"$/, function (version) {
-        return browser.perfAssertAppInfo("version", version);
-    });
+        return browser.perfAssertAppInfo('version', version)
+    })
 
     /**
      * Verifies the application orientation. The test will continue to run in case of failure.
@@ -204,8 +204,8 @@ module.exports = function() {
      * @return <code>true</code> if the orientation is verified, <code>false</code> otherwise
      */
     this.Then(/^application orientation should be "([^"]*)"$/, function (orientation) {
-        return browser.perfVerifyAppInfo("orientation", orientation);
-    });
+        return browser.perfVerifyAppInfo('orientation', orientation)
+    })
 
     /**
      * Checks the application orientation. Stops the test in case of failure.
@@ -213,8 +213,8 @@ module.exports = function() {
      * @param orientation the application orientation to check, landscape or portrait
      */
     this.Then(/^application orientation must be "([^"]*)"$/, function (orientation) {
-        return browser.perfAssertAppInfo("orientation", orientation);
-    });
+        return browser.perfAssertAppInfo('orientation', orientation)
+    })
 
     /**
      * Clicks on a native or web element.
@@ -225,8 +225,8 @@ module.exports = function() {
      * @see <a href="https://github.com/PerfectoCode/Quantum/wiki/Object%20Repository">Object Repository</a>
      */
     this.Then(/^I click on "([^"]*)"$/, function (locator) {
-        $(locator).click();
-    });
+        $(locator).click()
+    })
 
     /**
      * Clear element.
@@ -237,8 +237,8 @@ module.exports = function() {
      * @see <a href="https://github.com/PerfectoCode/Quantum/wiki/Object%20Repository">Object Repository</a>
      */
     this.Then(/^I clear "([^"]*)"$/, function (locator) {
-        $(locator).clear();
-    });
+        $(locator).clear()
+    })
 
     /**
      * Sets the text of a application element. Use the text parameter to specify the text to set.
@@ -250,8 +250,8 @@ module.exports = function() {
      * @see <a href="https://github.com/PerfectoCode/Quantum/wiki/Object%20Repository">Object Repository</a>
      */
     this.Then(/^I enter "([^"]*)" to "([^"]*)"$/, function (text,locator) {
-        $(locator).keys(value);
-    });
+        $(locator).keys(value)
+    })
 
 
     /**
@@ -262,8 +262,8 @@ module.exports = function() {
      */
     // TODO verify????
     this.Then(/^"([^"]*)" should exist$/, function (locator) {
-        return $(locator).isExisting();
-    });
+        return $(locator).isExisting()
+    })
 
     /**
      * Checks whether an element exists in the application. Stops the test in case of failure.
@@ -271,8 +271,8 @@ module.exports = function() {
      * @param locator the object identifier
      */
     this.Then(/^"([^"]*)" must exist$/, function (locator) {
-        return $(locator).isExisting();
-    });
+        return $(locator).isExisting()
+    })
 
     /**
      * Verifies that the text appears on the device screen, using visual analysis. The test will continue to run in case of failure.
@@ -281,8 +281,8 @@ module.exports = function() {
      * @return <code>true</code> if the text exists, <code>false</code> otherwise
      */
     this.Then(/^I should see text "([^"]*)"$/, function (text) {
-        return browser.perfVerifyVisualText(text);
-    });
+        return browser.perfVerifyVisualText(text)
+    })
 
     /**
      * Checks that the text appears on the device screen, using visual analysis. Stops the test in case of failure.
@@ -290,8 +290,8 @@ module.exports = function() {
      * @param text the text to check
      */
     this.Then(/^I must see text "([^"]*)"$/, function (text) {
-        return browser.perfAssertVisualText(text);
-    });
+        return browser.perfAssertVisualText(text)
+    })
 
     /**
      * Verifies that the image appears on the device screen, using visual analysis. The test will continue to run in case of failure.
@@ -299,8 +299,8 @@ module.exports = function() {
      * @param img the image to check
      */
     this.Then(/^I must see image "([^"]*)"$/, function (img) {
-        return browser.perfAssertVisualImage(img);
-    });
+        return browser.perfAssertVisualImage(img)
+    })
 
     /**
      * Checks that the image appears on the device screen, using visual analysis. Stops the test in case of failure.
@@ -313,8 +313,8 @@ module.exports = function() {
      * @see <a href="https://community.perfectomobile.com/posts/912493">Perfecto Lab Repository</a>
      */
     this.Then(/^I should see image "([^"]*)"$/, function (img) {
-        return browser.perfVerifyVisualImage(img);
-    });
+        return browser.perfVerifyVisualImage(img)
+    })
 
 
     /**
@@ -323,8 +323,8 @@ module.exports = function() {
      * @see <a href="https://community.perfectomobile.com/series/20208/posts/1072062">Switching contexts</a>
      */
     this.Then(/^I switch to "([^"]*)" context$/, function (context) {
-        return browser.context(context);
-    });
+        return browser.context(context)
+    })
 
 
     /**
@@ -333,8 +333,8 @@ module.exports = function() {
      * @see <a href="https://community.perfectomobile.com/series/20208/posts/1072062">Switching contexts</a>
      */
     this.Then(/^I switch to native context$/, function () {
-        return browser.context("NATIVE_APP");
-    });
+        return browser.context("NATIVE_APP")
+    })
 
     /**
      * Switch to web context (WEBVIEW).
@@ -342,8 +342,8 @@ module.exports = function() {
      * @see <a href="https://community.perfectomobile.com/series/20208/posts/1072062">Switching contexts</a>
      */
     this.Then(/^I switch to webview context$/, function () {
-        return browser.context("WEBVIEW");
-    });
+        return browser.context("WEBVIEW")
+    })
 
     /**
      * Switch to visual context (VISUAL).
@@ -351,8 +351,8 @@ module.exports = function() {
      * @see <a href="https://community.perfectomobile.com/series/20208/posts/1072062">Switching contexts</a>
      */
     this.Then(/^I switch to visual context$/, function () {
-        return browser.context("VISUAL");
-    });
+        return browser.context("VISUAL")
+    })
 
 
     /**
@@ -362,8 +362,8 @@ module.exports = function() {
      */
     //TODO - implement
     this.Then(/^I wait for "([^"]*)" seconds$/, function (seconds) {
-        return browser.wait([seconds]);
-    });
+        return browser.wait([seconds])
+    })
 
     /**
      * Waits for the element to appear on the device screen.
@@ -374,8 +374,8 @@ module.exports = function() {
      * @param locator the object identifier
      */
     this.Then(/^I wait for "([^"]*)" seconds for "([^"]*)" to appear$/, function (seconds, locator) {
-        return $(locator).waitForExist(seconds * 1000);
-    });
+        return $(locator).waitForExist(seconds * 1000)
+    })
 
     /**
      * Waits for the text to appear on the device screen, using visual analysis.
@@ -384,8 +384,8 @@ module.exports = function() {
      * @param text the text to wait for to appear
      */
     this.Then(/^I wait for "([^"]*)" seconds to see the text "([^"]*)"$/, function (seconds, text) {
-        return browser.perfWaitForPresentTextVisual(text, seconds);
-    });
+        return browser.perfWaitForPresentTextVisual(text, seconds)
+    })
 
     /**
      * Waits for the image to appear on the device screen, using visual analysis.
@@ -394,8 +394,8 @@ module.exports = function() {
      * @param image the image to wait for to appear
      */
     this.Then(/^I wait for "([^"]*)" seconds to see the image "([^"]*)"$/, function (seconds, image) {
-        return browser.perfWaitForPresentImageVisual(image, seconds);
-    });
+        return browser.perfWaitForPresentImageVisual(image, seconds)
+    })
 
     /**
      * Opens the browser application and browses to the specified location.
@@ -405,8 +405,8 @@ module.exports = function() {
      * @param url the specified URL
      */
     this.Then(/^I open browser to webpage "([^"]*)"$/, function (url) {
-        return browser.url(url);
-    });
+        return browser.url(url)
+    })
 
 
 
@@ -417,9 +417,9 @@ module.exports = function() {
      * @param name the application name as it is displayed on the device screen
      */
     this.Then(/^I start inject "([^"]*)" image to application name "([^"]*)"$/, function (repositoryFile, name) {
-        browser.context("NATIVE_APP");
-        browser.perfStartImageInjection(repositoryFile, name, "name");
-    });
+        browser.context("NATIVE_APP")
+        browser.perfStartImageInjection(repositoryFile, name, "name")
+    })
 
 
     /**
@@ -430,17 +430,17 @@ module.exports = function() {
      * @see <a href="https://community.perfectomobile.com/series/21760/posts/995065">Application Identifier</a>
      */
     this.Then(/^I start inject "([^"]*)" image to application id "([^"]*)"$/, function (repositoryFile, id) {
-        browser.context("NATIVE_APP");
-        browser.perfStartImageInjection(repositoryFile, id, "id");
-    });
+        browser.context("NATIVE_APP")
+        browser.perfStartImageInjection(repositoryFile, 'id', id)
+    })
 
     /**
      * Stop image injection.
      *
      */
     this.Then(/^I stop image injection$/, function () {
-        browser.perfStopImageInjection();
-    });
+        browser.perfStopImageInjection()
+    })
 
     /**
      * Send fingerprint with success result to application with the applicaiton id.
@@ -448,8 +448,8 @@ module.exports = function() {
      * @param id the identifier of the application
      */
     this.Then(/^I set fingerprint with success result to application by id "([^"]*)"$/, function (id) {
-        return browser.perfSetFingerprint("identifier", id,  "success");
-    });
+        return browser.perfSetFingerprint('identifier', id,  'success')
+    })
 
     /**
      * Send fingerprint with success result to application with the applicaiton name.
@@ -457,8 +457,8 @@ module.exports = function() {
      * @param name the name of the application
      */
     this.Then(/^I set fingerprint with success result to application by name "([^"]*)"$/, function (name) {
-        return browser.perfSetFingerprint("name", name,  "success");
-    });
+        return browser.perfSetFingerprint('name', name,  'success')
+    })
 
     /**
      * Send fingerprint with fail result to application with the applicaiton id.
@@ -467,8 +467,8 @@ module.exports = function() {
      * @param id the identifier of the application
      */
     this.Then(/^I set fingerprint with error type "([^"]*)" result to application by id "([^"]*)"$/, function(errorType, id){
-        browser.perfSetFingerprint("identifier", id,  "fail", errorType);
-    });
+        browser.perfSetFingerprint('identifier', id,  'fail', errorType)
+    })
 
     /**
      * Send fingerprint with fail result to application with the applicaiton name.
@@ -477,16 +477,16 @@ module.exports = function() {
      * @param name the name of the application
      */
     this.Then(/^I set fingerprint with error type "([^"]*)" result to application by name "([^"]*)"$/, function(errorType, name){
-        browser.perfSetFingerprint("name", name,  "fail", errorType);
-    });
+        browser.perfSetFingerprint('name', name,  'fail', errorType)
+    })
     /**
      * Send fingerprint with success result to application with the applicaiton id.
      *
      * @param id the identifier of the application
      */
     this.Then(/^I set sensor authentication with success result to application by id "([^"]*)"$/, function (id) {
-        return browser.perfSetSensorAuthentication("identifier", id,  "success");
-    });
+        return browser.perfSetSensorAuthentication('identifier', id,  'success')
+    })
 
     /**
      * Send fingerprint with success result to application with the applicaiton name.
@@ -494,8 +494,8 @@ module.exports = function() {
      * @param name the name of the application
      */
     this.Then(/^I set sensor authentication with success result to application by name "([^"]*)"$/, function (name) {
-        return browser.perfSetSensorAuthentication("name", name,  "success");
-    });
+        return browser.perfSetSensorAuthentication('name', name,  'success')
+    })
 
     /**
      * Send fingerprint with fail result to application with the applicaiton id.
@@ -504,8 +504,8 @@ module.exports = function() {
      * @param id the identifier of the application
      */
    this.Then(/^I set sensor authentication with error type "([^"]*)" result to application by id "([^"]*)"$/, function(errorType, id){
-        browser.perfSetSensorAuthentication("identifier", id,  "fail", errorType);
-    });
+        browser.perfSetSensorAuthentication('identifier', id,  'fail', errorType)
+    })
     /**
      * Send fingerprint with fail result to application with the applicaiton name.
      *
@@ -513,8 +513,8 @@ module.exports = function() {
      * @param name the name of the application
      */
     this.Then(/^I set sensor authentication with error type "([^"]*)" result to application by name "([^"]*)"$/, function(errorType, name){
-        browser.perfSetSensorAuthentication("name", name,  "fail", errorType);
-    });
+        browser.perfSetSensorAuthentication('name', name,  'fail', errorType)
+    })
 
     /**
      * This step will inject an audio from the given path into the device.
@@ -524,10 +524,10 @@ module.exports = function() {
      */
     this.Then(/^I inject an audio from "([^"]*)" into the device$/, function(audioFilePath){
         browser.perfAudioInject(audioInjectParams)
-    });
+    })
     this.Then(/^I set sensor authentication with error type "([^"]*)" result to application by name "([^"]*)"$/, function(errorType, name){
-        browser.perfSetSensorAuthentication("name", name,  "fail", errorType);
-    });
+        browser.perfSetSensorAuthentication('name', name,  'fail', errorType)
+    })
 
     /**
      * This step will verify that the audio was played. Audio checkpoint will only
@@ -535,6 +535,6 @@ module.exports = function() {
      */
     this.Then(/^I verify the audio is received$/, function(){
         browser.perfVerifyAudioReceived()
-    });
+    })
 
-};
+}

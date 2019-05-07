@@ -20,28 +20,28 @@
  *
  */
 module.exports = function() {
-    'use strict';
+    'use strict'
 
     /**
      * Rotates the device to landscape mode.
      */
     this.Then(/^I rotate the device to landscape$/, function () {
-        browser.perfRotateDevice("landscape", "state");
-    });
+        browser.perfRotateDevice("landscape", "state")
+    })
 
     /**
      * Rotates the device to portrait mode.
      */
     this.Then(/^I rotate the device to portrait$/, function () {
-        browser.perfRotateDevice("portrait", "state");
-    });
+        browser.perfRotateDevice("portrait", "state")
+    })
 
     /**
      * Rotates the device to its next state.
      */
     this.Then(/^I rotate the device$/, function () {
-        browser.perfRotateDevice("next", "operation");
-    });
+        browser.perfRotateDevice("next", "operation")
+    })
 
     /**
      * Sets the device location using latitude,longitude coordinates (decimal
@@ -58,8 +58,8 @@ module.exports = function() {
      *            the location coordinates to set
      */
     this.Then(/^I set the device location to the coordinates "([^"]*)"$/, function (coordinates) {
-        browser.perfSetLocation(coordinates, "coordinates");
-    });
+        browser.perfSetLocation('coordinates', coordinates)
+    })
 
     /**
      * Sets the device location using address (Google Geocoding) format. This
@@ -75,8 +75,8 @@ module.exports = function() {
      *            the location address to set
      */
     this.Then(/^I set the device location to the address "([^"]*)"$/, function (address) {
-        browser.perfSetLocation(address, "address");
-    });
+        browser.perfSetLocation('address', address)
+    })
     /**
      * Checks the device location using latitude,longitude coordinates (decimal
      * degrees) format. Stops the test in case of failure.
@@ -87,8 +87,8 @@ module.exports = function() {
      *            the location coordinates to check
      */
     this.Then(/^The device coordinates must be "([^"]*)"$/, function (coordinates) {
-        browser.perfAssertLocation(coordinates);
-    });
+        browser.perfAssertLocation(coordinates)
+    })
 
     /**
      * Verifies the device location using latitude,longitude coordinates (decimal
@@ -102,8 +102,8 @@ module.exports = function() {
      *         otherwise
      */
     this.Then(/^The device coordinates should be "([^"]*)"$/, function (coordinates) {
-        browser.perfVerifyLocation(coordinates);
-    });
+        browser.perfVerifyLocation(coordinates)
+    })
 
     /**
      * Resets the device location. This command should be used after the setting the
@@ -112,8 +112,8 @@ module.exports = function() {
      * This operation returns the device to its current location.
      */
     this.Then(/^I reset the device location$/, function () {
-        browser.perfResetLocation();
-    });
+        browser.perfResetLocation()
+    })
 
     /**
      * Brings the device to its idle / home screen. This is done by navigating the
@@ -126,36 +126,36 @@ module.exports = function() {
      * point for the user.
      */
     this.Then(/^I go to the device home screen$/, function () {
-        browser.perfGoToHomeScreen();
-    });
+        browser.perfGoToHomeScreen()
+    })
 
     /**
      * Performs the swipe gesture to the left.
      */
     this.Then(/^I swipe left$/, function () {
-        browser.perfSwipe("60%,50%", "10%,50%");
-    });
+        browser.perfSwipe("60%,50%", "10%,50%")
+    })
 
     /**
      * Performs the swipe gesture to the right.
      */
     this.Then(/^I swipe right$/, function () {
-        browser.perfSwipe("40%,50%", "90%,50%");
-    });
+        browser.perfSwipe("40%,50%", "90%,50%")
+    })
 
     /**
      * Performs the scroll up gesture.
      */
     this.Then(/^I scroll up$/, function () {
-        browser.perfSwipe("50%,40%", "50%,60%");
-    });
+        browser.perfSwipe("50%,40%", "50%,60%")
+    })
 
     /**
      * Performs the scroll down gesture.
      */
     this.Then(/^I scroll down$/, function () {
-        browser.perfSwipe("50%,60%", "50%,40%");
-    });
+        browser.perfSwipe("50%,60%", "50%,40%")
+    })
 
     /**
      * Locks the device screen for the duration set in seconds, and unlocks the
@@ -165,8 +165,8 @@ module.exports = function() {
      *            the lock screen duration
      */
     this.Then(/^I lock the device for "([^"]*)" seconds$/, function (seconds) {
-        browser.lockDevice(seconds);
-    });
+        browser.perfLockDevice(seconds)
+    })
 
     /**
      * Sets the device timezone.
@@ -175,8 +175,8 @@ module.exports = function() {
      *            the new timezone Id
      */
     this.Then(/^I set timezone to "([^"]*)"$/, function (timezone) {
-        browser.perfSetTimezone(timezone);
-    });
+        browser.perfSetTimezone(timezone)
+    })
 
     /**
      * Checks the device timezone. Stops the test in case of failure.
@@ -185,9 +185,9 @@ module.exports = function() {
      *            the new timezone Id to check
      */
     this.Then(/^The device timezone must be "([^"]*)"$/, function (timezone) {
-        console.log("he device timezone must be  ");
-        browser.assertTimezone(timezone);
-    });
+        console.log("he device timezone must be  ")
+        browser.perfAssertTimezone(timezone)
+    })
 
     /**
      * Verifies the device timezone. The test will continue to run in case of
@@ -199,24 +199,24 @@ module.exports = function() {
      *         otherwise
      */
     this.Then(/^The device timezone should be "([^"]*)"$/, function (timezone) {
-        console.log("he device timezone should be  ");
-        return browser.perfVerifyTimezone(timezone);
-    });
+        console.log("he device timezone should be  ")
+        return browser.perfVerifyTimezone(timezone)
+    })
 
     /**
      * Resets the device timezone Id to the default.
      */
     this.Then(/^I reset the device timezone$/, function () {
-        return PerfectoActions.resetTimezone();
-    });
+        return browser.perfResetTimezone()
+    })
 
     /**
      * Gets a digital screenshot of the current screen display, and places it in the
      * report.
      */
      this.Then(/^I take a screenshot$/, function () {
-        return browser.takeScreenshot();
-    });
+        return browser.perfTakeScreenshot()
+    })
 
     /**
      * Gets a digital screenshot of the current screen display, and saves it to the
@@ -227,19 +227,19 @@ module.exports = function() {
      *            to save the file. Example - PRIVATE:dir1/dir2/name.png
      */
     this.Then(/^I take a screenshot and save to "([^"]*)"$/, function (repositoryPath) {
-        return browser.takeScreenshot(repositoryPath, true);
-    });
+        return browser.perfTakeScreenshot(repositoryPath, true)
+    })
 
     /**
      * Hides the virtual keyboard display.
      */
     this.Then(/^I hide keyboard$/, function () {
-        return browser.hideKeyboard();
-    });
+        return browser.perfHideKeyboard()
+    })
 
     this.Then(/^I press mobile "([^"]*)" key$/, function (keySequence) {
-        return browser.pressKey(keySequence);
-    });
+        return browser.pressKey(keySequence)
+    })
 
     /**
      * Performs the touch gesture according to the point coordinates.
@@ -249,8 +249,8 @@ module.exports = function() {
      *            percentage(recommended) for example 50%,50%.
      */
     this.Then(/^I touch on "([^"]*)" point$/, function (point) {
-        return browser.touch(point);
-    });
+        return browser.perfTouch(point)
+    })
 
     /**
      * Performs the double touch gesture according to the point coordinates.
@@ -260,8 +260,8 @@ module.exports = function() {
      *            percentage(recommended) for example 50%,50%.
      */
     this.Then(/^I double click on "([^"]*)" point$/, function (point) {
-        return browser.doubleTouch(point);
-    });
+        return browser.perfDoubleTouch(point)
+    })
 
 
     /**
@@ -273,19 +273,19 @@ module.exports = function() {
      */
     this.Then(/^I double click on "([^"]*)"$/, function (locator) {
 
-        let myElement = $(locator);
+        let myElement = $(locator)
 
-        let location = myElement.getLocation();
-        let size = myElement.size;
+        let location = myElement.getLocation()
+        let size = myElement.size
 
         // determine location to click and convert to an appropriate string
-        let xToClick = location.getX() + (size.getWidth() / 2);
-        let yToClick = location.getY() + (size.getHeight() / 2);
-        let clickLocation = xToClick + "," + yToClick;
+        let xToClick = location.getX() + (size.getWidth() / 2)
+        let yToClick = location.getY() + (size.getHeight() / 2)
+        let clickLocation = xToClick + "," + yToClick
 
-        browser.doubleTouch(clickLocation);
+        browser.perfDoubleTouch(clickLocation)
 
-    });
+    })
 
     /**
      * Performs the lo touch gesture according to the point coordinates.
@@ -295,18 +295,18 @@ module.exports = function() {
      *            percentage(recommended) for example 50%,50%.
      */
     this.Then(/^I tap on "([^"]*)" for "([^"]*)" seconds$/, function (locator, seconds) {
-        let myElement = $(locator);
+        let myElement = $(locator)
 
-        let location = myElement.getLocation();
-        let size = myElement.size;
+        let location = myElement.getLocation()
+        let size = myElement.size
 
         // determine location to click and convert to an appropriate string
-        let xToClick = location.getX() + (size.getWidth() / 2);
-        let yToClick = location.getY() + (size.getHeight() / 2);
-        let clickLocation = xToClick + "," + yToClick;
+        let xToClick = location.getX() + (size.getWidth() / 2)
+        let yToClick = location.getY() + (size.getHeight() / 2)
+        let clickLocation = xToClick + "," + yToClick
 
-        browser.longTouch(clickLocation, seconds);
-    });
+        browser.perfLongTouch(clickLocation, seconds)
+    })
 
     /**
      * Generate Har file. The HAR file will be included in the Reporting artifacts
@@ -314,24 +314,24 @@ module.exports = function() {
      *
      */
    this.Then(/^Start generate Har file$/, function () {
-       browser.perfGenerateHAR();
-    });
+       browser.perfGenerateHAR()
+    })
 
     /**
      * Stop generatimg Har file.
      *
      */
     this.Then(/^Stop generate Har file$/, function () {
-        browser.perfStopGenerateHAR();
-    });
+        browser.perfStopGenerateHAR()
+    })
 
     /**
      * Add Comment to Report
      *
      */
     this.Then(/^Add report comment "([^"]*)"$/, function (comment) {
-        browser.perfReportComment(comment);
-    });
+        browser.perfReportComment(comment)
+    })
 
     /**
      * Picks the previous value of the specific pickerwheel
@@ -340,6 +340,6 @@ module.exports = function() {
      * 					or any other parent/child of the pickerwheel.
      */
     this.Then(/^I validate "([^"]*)" has the value "([^"]*)"$/, function (locator, value) {
-        assert.equals($(locator).getAttribute("value"), value, `The value did not match`);
-    });
-};
+        assert.equals($(locator).getAttribute("value"), value, `The value did not match`)
+    })
+}

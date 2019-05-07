@@ -25,7 +25,6 @@ global.WAITFOR_TIMEOUT=10000;
 exports.config={
 
     services:['perfecto'],
-    user:process.env.PERFECTO_USER,
     securityToken:process.env.PERFECTO_TOKEN,
     host:host,
     path:'/nexperience/perfectomobile/wd/hub',
