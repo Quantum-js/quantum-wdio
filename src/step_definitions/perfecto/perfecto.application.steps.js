@@ -237,7 +237,7 @@ module.exports = function() {
      * @see <a href="https://github.com/PerfectoCode/Quantum/wiki/Object%20Repository">Object Repository</a>
      */
     this.Then(/^I clear "([^"]*)"$/, function (locator) {
-        $(locator).clear()
+        $(locator).clearElement()
     })
 
     /**
@@ -250,7 +250,7 @@ module.exports = function() {
      * @see <a href="https://github.com/PerfectoCode/Quantum/wiki/Object%20Repository">Object Repository</a>
      */
     this.Then(/^I enter "([^"]*)" to "([^"]*)"$/, function (text,locator) {
-        $(locator).keys(value)
+        $(locator).keys(text)
     })
 
 
@@ -298,8 +298,8 @@ module.exports = function() {
      *
      * @param img the image to check
      */
-    this.Then(/^I must see image "([^"]*)"$/, function (img) {
-        return browser.perfAssertVisualImage(img)
+    this.Then(/^I must see image "([^"]*)" in "(\d+)" seconds with threshold "(\d+)" and needle bound "(\d+)"$/, function (img, seconds, threshold, needleBound) {
+        return browser.perfAssertVisualImage(img, seconds, threshold, needleBound)
     })
 
     /**
@@ -312,8 +312,8 @@ module.exports = function() {
      * @param img the repository path, including directory and file name, where to locate the image
      * @see <a href="https://community.perfectomobile.com/posts/912493">Perfecto Lab Repository</a>
      */
-    this.Then(/^I should see image "([^"]*)"$/, function (img) {
-        return browser.perfVerifyVisualImage(img)
+    this.Then(/^I should see image "([^"]*)" in "(\d+)" seconds with threshold "(\d+)" and needle bound "(\d+)"$/, function (img, seconds, threshold, needleBound) {
+        return browser.perfVerifyVisualImage(img, seconds, threshold, needleBound)
     })
 
 
@@ -362,7 +362,7 @@ module.exports = function() {
      */
     //TODO - implement
     this.Then(/^I wait for "([^"]*)" seconds$/, function (seconds) {
-        return browser.wait([seconds])
+        return browser.pause([seconds])
     })
 
     /**
@@ -383,7 +383,7 @@ module.exports = function() {
      * @param seconds the wait duration
      * @param text the text to wait for to appear
      */
-    this.Then(/^I wait for "([^"]*)" seconds to see the text "([^"]*)"$/, function (seconds, text) {
+    this.Then(/^I wait for "(\d+)" seconds to see the text "([^"]*)"$/, function (seconds, text) {
         return browser.perfWaitForPresentTextVisual(text, seconds)
     })
 
@@ -393,8 +393,8 @@ module.exports = function() {
      * @param seconds the wait duration
      * @param image the image to wait for to appear
      */
-    this.Then(/^I wait for "([^"]*)" seconds to see the image "([^"]*)"$/, function (seconds, image) {
-        return browser.perfWaitForPresentImageVisual(image, seconds)
+    this.Then(/^I wait for "(\d+)" seconds to see the image "([^"]*)" with threshold "(\d+)" and needle bound "(\d+)"$/, function (seconds, image, threshold, needleBound) {
+        return browser.perfWaitForPresentImageVisual(image, seconds, threshold, needleBound)
     })
 
     /**
@@ -503,7 +503,7 @@ module.exports = function() {
      * @param errorType indicates why the authentication failed. May be authFailed, userCancel, userFallback, systemCancel, or lockout
      * @param id the identifier of the application
      */
-   this.Then(/^I set sensor authentication with error type "([^"]*)" result to application by id "([^"]*)"$/, function(errorType, id){
+    this.Then(/^I set sensor authentication with error type "([^"]*)" result to application by id "([^"]*)"$/, function(errorType, id){
         browser.perfSetSensorAuthentication('identifier', id,  'fail', errorType)
     })
     /**

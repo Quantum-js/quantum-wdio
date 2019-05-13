@@ -1,4 +1,3 @@
-
 /**
  * The class PerfectoDeviceSteps provides methods for working with a device,
  * with cucumber steps annotations.
@@ -7,10 +6,10 @@
  *
  * <pre>
  * Scenario:
- * 	Given I go to the device home screen
- * 	Then I open browser to webpage "https://community.perfectomobile.com/"
- * 	Then I should see text "GETTING STARTED"
- * 	Then I take a screenshot and save to PRIVATE:dir1/dir2/name.png
+ *    Given I go to the device home screen
+ *    Then I open browser to webpage "https://community.perfectomobile.com/"
+ *    Then I should see text "GETTING STARTED"
+ *    Then I take a screenshot and save to PRIVATE:dir1/dir2/name.png
  * </pre>
  *
  * @author shanil
@@ -19,28 +18,28 @@
  *      Implementation</a>
  *
  */
-module.exports = function() {
+module.exports = function () {
     'use strict'
 
     /**
      * Rotates the device to landscape mode.
      */
     this.Then(/^I rotate the device to landscape$/, function () {
-        browser.perfRotateDevice("landscape", "state")
+        browser.perfRotateDevice("state", "landscape")
     })
 
     /**
      * Rotates the device to portrait mode.
      */
     this.Then(/^I rotate the device to portrait$/, function () {
-        browser.perfRotateDevice("portrait", "state")
+        browser.perfRotateDevice("state", "portrait")
     })
 
     /**
      * Rotates the device to its next state.
      */
     this.Then(/^I rotate the device$/, function () {
-        browser.perfRotateDevice("next", "operation")
+        browser.perfRotateDevice("operation", "next")
     })
 
     /**
@@ -214,7 +213,7 @@ module.exports = function() {
      * Gets a digital screenshot of the current screen display, and places it in the
      * report.
      */
-     this.Then(/^I take a screenshot$/, function () {
+    this.Then(/^I take a screenshot$/, function () {
         return browser.perfTakeScreenshot()
     })
 
@@ -238,7 +237,7 @@ module.exports = function() {
     })
 
     this.Then(/^I press mobile "([^"]*)" key$/, function (keySequence) {
-        return browser.pressKey(keySequence)
+        return browser.perfPressKey(keySequence)
     })
 
     /**
@@ -276,11 +275,11 @@ module.exports = function() {
         let myElement = $(locator)
 
         let location = myElement.getLocation()
-        let size = myElement.size
+        let size = myElement.getElementSize()
 
         // determine location to click and convert to an appropriate string
-        let xToClick = location.getX() + (size.getWidth() / 2)
-        let yToClick = location.getY() + (size.getHeight() / 2)
+        let xToClick = location.x + (size.width / 2)
+        let yToClick = location.y + (size.height / 2)
         let clickLocation = xToClick + "," + yToClick
 
         browser.perfDoubleTouch(clickLocation)
@@ -298,11 +297,11 @@ module.exports = function() {
         let myElement = $(locator)
 
         let location = myElement.getLocation()
-        let size = myElement.size
+        let size = myElement.getElementSize()
 
         // determine location to click and convert to an appropriate string
-        let xToClick = location.getX() + (size.getWidth() / 2)
-        let yToClick = location.getY() + (size.getHeight() / 2)
+        let xToClick = location.x + (size.width / 2)
+        let yToClick = location.y + (size.height / 2)
         let clickLocation = xToClick + "," + yToClick
 
         browser.perfLongTouch(clickLocation, seconds)
@@ -313,8 +312,8 @@ module.exports = function() {
      * for the automation report.
      *
      */
-   this.Then(/^Start generate Har file$/, function () {
-       browser.perfGenerateHAR()
+    this.Then(/^Start generate Har file$/, function () {
+        browser.perfGenerateHAR()
     })
 
     /**
@@ -336,10 +335,12 @@ module.exports = function() {
     /**
      * Picks the previous value of the specific pickerwheel
      * @param locator - The pickerwheel element must be this specific
-     * 					type ("XCUIElementTypePickerWheel"), not “XCUIElementTypePicker”
-     * 					or any other parent/child of the pickerwheel.
+     *                    type ("XCUIElementTypePickerWheel"), not “XCUIElementTypePicker”
+     *                    or any other parent/child of the pickerwheel.
      */
     this.Then(/^I validate "([^"]*)" has the value "([^"]*)"$/, function (locator, value) {
-        assert.equals($(locator).getAttribute("value"), value, `The value did not match`)
+        let message = `The value did not match`;
+        let assertMethod = () => assert.equal($(locator).getAttribute("value"), value, message)
+        return browser.perfVerify(assertMethod, message);
     })
 }
