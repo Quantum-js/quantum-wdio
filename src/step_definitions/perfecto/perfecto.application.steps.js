@@ -374,7 +374,7 @@ module.exports = function() {
      * @param locator the object identifier
      */
     this.Then(/^I wait for "([^"]*)" seconds for "([^"]*)" to appear$/, function (seconds, locator) {
-        return $(locator).waitForExist(seconds * 1000)
+        return browser.waitForVisible(locator,seconds * 1000, true)
     })
 
     /**
