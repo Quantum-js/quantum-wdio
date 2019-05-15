@@ -6,7 +6,7 @@ global.should=chai.should();
 
 
 // The Perfecto Continuous Quality Lab you work with
-global.CQL_NAME='ps'
+global.CQL_NAME='<<CQ_LAB_NAME>>'
 const host=CQL_NAME+'.perfectomobile.com'
 
 global.projectName="WDIO_TESTS_SERVICE";
