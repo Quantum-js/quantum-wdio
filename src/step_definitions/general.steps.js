@@ -205,7 +205,7 @@ module.exports = function() {
     })
 
     this.When(/^I wait for (\d+) seconds(?:.*)$/, function (seconds) {
-        //TODO - Lloyds issue work
+       
         // browser.pause(3000);
         // browser.url('http://www.google.com');
         // browser.click('//input[@type=\'search\']');
