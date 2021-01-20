@@ -23,10 +23,6 @@ class Page {
     // load page
     getPage() {
         let that = this
-        // Note: We're calling browser.driver.get() initially so as to access the desktop storage more quickly.
-        // We use browser.driver.get() instead of browser.get() so that Protractor doesn't go looking for an Angular page.
-        // We then do a browser.get() to get to the actual URL being tested after setting the required NAB Survey
-        // sessionStorage/localStorage parameters via pageUtils.disableNABSurveyPopup().
         browser.url(this.siteHostPrefix)
         // console.log('waitForLoaded')
         //browser.isExisting(this.loc.loadCheck)
